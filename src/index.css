@@ -4,11 +4,39 @@
   box-sizing: border-box;
 }
 
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f7fb;
-  color: #212529;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #212529;
 }
+
+.card {
+    border-radius: 12px;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.form-control,
+.form-select {
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 7px;
+}
+
+.navbar-brand {
+    letter-spacing: 0.3px;
+}
+
 
 button {
   cursor: pointer;
