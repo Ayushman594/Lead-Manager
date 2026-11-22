@@ -1,0 +1,22 @@
+# Java
+*.class
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# React
+node_modules/
+dist/
+
+# IDE
+.classpath
+.project
+.settings/
+.idea/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
