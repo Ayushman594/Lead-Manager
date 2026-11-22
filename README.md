@@ -6,9 +6,9 @@ The application provides search and filtering functionality to make lead managem
 
 The frontend is developed using React.js and Bootstrap, while the backend is built with Java Spring Boot and MySQL for data storage. The application follows a RESTful API architecture and implements validation on both the frontend and backend to ensure data accuracy.
 
-<strong> Technologies used for frontend: React js, Bootstrap </strong>
-<strong> Technologies used for backend: Springboot, Java </strong>
-<strong> Database used: MySQL </strong>
+<strong> Technologies used for frontend: React js, Bootstrap </strong><br/>
+<strong> Technologies used for backend: Springboot, Java </strong><br/>
+<strong> Database used: MySQL </strong><br/>
 
 To run the project in frontend, use this command in command prompt/ terminal :  <strong>npm run dev</strong>
 
