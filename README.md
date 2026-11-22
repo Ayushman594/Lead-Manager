@@ -10,9 +10,9 @@ The frontend is developed using React.js and Bootstrap, while the backend is bui
 <strong> Technologies used for backend: Springboot, Java </strong><br/>
 <strong> Database used: MySQL </strong><br/>
 
-To run the project in frontend, Open the frontend folder in Command prompt and use this command in command prompt/ terminal :  <strong>npm run dev</strong>
+To run the project in frontend, You will need to install axios, bootstrap, react-router-dom and react-hook-form , so use this command : <strong>npm i bootstrap axios react-router-dom react-hook form </strong> in command prompt after opening frontend folder in command prompt and then use this command in command prompt/ terminal :  <strong>npm run dev</strong>
 
-You will also need to install axios, bootstrap, react-router-dom and react-hook-form , so use this command : <strong>npm i bootstrap axios react-router-dom react-hook form </strong> in command prompt after opening frontend folder in command prompt
+
 
 To run backend, Open the backend folder in Eclipse IDE or any other IDE and Ensure that you are using your MYSQL password in <strong> application.properties </strong> file. Replace <strong> ${DB_PASSWORD} </strong> with your mysql password. Also replace root with your mysql username (if it is not root).
 
