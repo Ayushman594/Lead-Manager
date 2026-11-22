@@ -6,12 +6,12 @@ The application provides search and filtering functionality to make lead managem
 
 The frontend is developed using React.js and Bootstrap, while the backend is built with Java Spring Boot and MySQL for data storage. The application follows a RESTful API architecture and implements validation on both the frontend and backend to ensure data accuracy.
 
-Technologies used for frontend: React js, Bootstrap
-Technologies used for backend: Springboot, Java
-Database used: MySQL
+<strong> Technologies used for frontend: React js, Bootstrap </strong>
+<strong> Technologies used for backend: Springboot, Java </strong>
+<strong> Database used: MySQL </strong>
 
 To run the project in frontend, use this command in command prompt/ terminal :  <strong>npm run dev</strong>
 
 To run backend, Ensure that you are using your MYSQL password in <strong> application.properties </strong> file. Replace <strong> ${DB_PASSWORD} </strong> with your mysql password. Also replace root with your mysql username (if it is not root).
 
-In this file, you should see a localhost address 3306 with LeadManager . you can also replace this with your database name.
+In this file, you should see a localhost address 3306 with LeadManager . you can also replace LeadManager with your database name or Create a database named LeadManager where leads will get stored.
