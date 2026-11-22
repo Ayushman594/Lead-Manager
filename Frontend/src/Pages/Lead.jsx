@@ -1,77 +1,78 @@
-import Navbar from "../Components/Navbar";
-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LeadService from '../Services/LeadService';
+import Navbar from '../Components/Navbar';
 
 function Leads() {
 
     const [leads, setLeads] = useState([]);
     const [search, setSearch] = useState('');
     const [status, setStatus] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchLeads();
     }, []);
 
     const fetchLeads = () => {
+
+        setLoading(true);
+
         LeadService.getAllLeads()
             .then(response => {
                 setLeads(response.data);
             })
             .catch(error => {
                 console.error(error);
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
-    const handleSearch = (value) => {
-        setSearch(value);
+    const fetchFilteredLeads = () => {
 
-        if (value.trim() === '') {
-            fetchLeads();
-            return;
-        }
+        setLoading(true);
 
-        LeadService.searchLeads(value)
+        const request = search.trim()
+            ? LeadService.searchLeads(search.trim())
+            : LeadService.getAllLeads();
+
+        request
             .then(response => {
-                setLeads(response.data);
+
+                let result = response.data;
+
+                if (status !== '') {
+                    result = result.filter(
+                        lead => lead.status === status
+                    );
+                }
+
+                setLeads(result);
             })
             .catch(error => {
                 console.error(error);
-            });
-    };
-
-    const handleFilter = (value) => {
-        setStatus(value);
-
-        if (value === '') {
-            fetchLeads();
-            return;
-        }
-
-        LeadService.filterLeads(value)
-            .then(response => {
-                setLeads(response.data);
             })
-            .catch(error => {
-                console.error(error);
-            });
+            .finally(() => setLoading(false));
     };
+
+    useEffect(() => {
+
+        fetchFilteredLeads();
+
+    }, [search, status]);
 
     const handleDelete = (id) => {
 
-        const confirmDelete = window.confirm(
-            'Are you sure you want to delete this lead?'
-        );
+        if (window.confirm('Are you sure you want to delete this lead?')) {
 
-        if (confirmDelete) {
             LeadService.deleteLead(id)
                 .then(() => {
                     alert('Lead deleted successfully!');
-                    fetchLeads();
+                    fetchFilteredLeads();
                 })
                 .catch(error => {
                     console.error(error);
+                    alert('Failed to delete lead.');
                 });
         }
     };
@@ -112,8 +113,6 @@ function Leads() {
 
             </div>
 
-            {/* Search and Filter */}
-
             <div className="row mb-3">
 
                 <div className="col-md-6 mb-2">
@@ -123,7 +122,7 @@ function Leads() {
                         className="form-control"
                         placeholder="Search by lead name..."
                         value={search}
-                        onChange={(e) => handleSearch(e.target.value)}
+                        onChange={e => setSearch(e.target.value)}
                     />
 
                 </div>
@@ -133,7 +132,7 @@ function Leads() {
                     <select
                         className="form-select"
                         value={status}
-                        onChange={(e) => handleFilter(e.target.value)}
+                        onChange={e => setStatus(e.target.value)}
                     >
                         <option value="">All Statuses</option>
                         <option value="NEW">New</option>
@@ -146,8 +145,6 @@ function Leads() {
 
             </div>
 
-            {/* Leads Table */}
-
             <div className="card shadow-sm border-0">
 
                 <div className="table-responsive">
@@ -155,7 +152,6 @@ function Leads() {
                     <table className="table table-hover align-middle mb-0">
 
                         <thead className="table-light">
-
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
@@ -166,17 +162,23 @@ function Leads() {
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
-
                         </thead>
 
                         <tbody>
 
-                            {leads.length > 0 ? (
+                            {loading ? (
+
+                                <tr>
+                                    <td colSpan="8" className="text-center py-4">
+                                        Loading leads...
+                                    </td>
+                                </tr>
+
+                            ) : leads.length > 0 ? (
 
                                 leads.map(lead => (
 
                                     <tr key={lead.leadId}>
-
                                         <td>{lead.leadId}</td>
                                         <td>{lead.name}</td>
                                         <td>{lead.email}</td>
@@ -186,7 +188,6 @@ function Leads() {
                                         <td>{getStatusBadge(lead.status)}</td>
 
                                         <td>
-
                                             <Link
                                                 to={`/edit-lead/${lead.leadId}`}
                                                 className="btn btn-sm btn-outline-primary me-2"
@@ -200,9 +201,7 @@ function Leads() {
                                             >
                                                 Delete
                                             </button>
-
                                         </td>
-
                                     </tr>
 
                                 ))
@@ -226,7 +225,7 @@ function Leads() {
             </div>
 
         </div>
-       </>
+      </>
     );
 }
 
