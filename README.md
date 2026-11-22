@@ -10,8 +10,8 @@ The frontend is developed using React.js and Bootstrap, while the backend is bui
 <strong> Technologies used for backend: Springboot, Java </strong><br/>
 <strong> Database used: MySQL </strong><br/>
 
-To run the project in frontend, use this command in command prompt/ terminal :  <strong>npm run dev</strong>
+To run the project in frontend, Open the frontend folder in Command prompt and use this command in command prompt/ terminal :  <strong>npm run dev</strong>
 
-To run backend, Ensure that you are using your MYSQL password in <strong> application.properties </strong> file. Replace <strong> ${DB_PASSWORD} </strong> with your mysql password. Also replace root with your mysql username (if it is not root).
+To run backend, Open the backend folder in Eclipse IDE or any other IDE and Ensure that you are using your MYSQL password in <strong> application.properties </strong> file. Replace <strong> ${DB_PASSWORD} </strong> with your mysql password. Also replace root with your mysql username (if it is not root).
 
 In this file, you should see a localhost address 3306 with LeadManager . you can also replace LeadManager with your database name or Create a database named LeadManager where leads will get stored.
