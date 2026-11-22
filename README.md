@@ -1,0 +1,7 @@
+## Project Overview
+
+Lead Manager is a full-stack web application designed to help sales teams efficiently manage and track potential customers (leads). It allows users to add new leads, view lead details, update lead information, manage lead statuses, and delete leads when they are no longer needed.
+
+The application provides search and filtering functionality to make lead management easier. It also includes a dashboard that displays the total number of leads and their distribution across different statuses, helping users monitor their sales pipeline.
+
+The frontend is developed using React.js and Bootstrap, while the backend is built with Java Spring Boot and MySQL for data storage. The application follows a RESTful API architecture and implements validation on both the frontend and backend to ensure data accuracy.
